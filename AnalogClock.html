@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>clock</title>
+</head>
+<style>
+    *{
+        list-style: none;
+    }
+    body{
+        background-color: rgb(184, 255, 188);
+    }
+#clock{
+    margin-top: 10%;
+    margin-left: 30%;
+    border-radius: 150px ;
+    box-shadow: 0px 0px 10px 0px black;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    background-color: rgb(0, 130, 173);
+   
+}
+.clocknumbers{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    display: inline;
+    color: white;
+}
+#a12{
+    position: relative;
+    left: 135px;
+    top: 7px;
+    
+}
+#a2{
+    position: relative;
+    left: 200px;
+    top: 70px;
+}
+#a3{
+    position: relative;
+    left: 200px;
+    top: 135px;
+}
+#a1{
+    position: relative;
+    left: 175px  ;
+    top: 25px;
+}
+#a4{
+    position: relative;
+    left: 165px;
+    top: 195px;
+}
+#a5{
+    position: relative;
+    left: 102px;
+    top: 243px;
+}
+#a6{
+    position: relative;
+
+    left: 18px;
+    top: 260px;
+}
+#a7{
+    position: relative;
+    right: 66px;
+    top: 247px ;
+}
+#a8{
+    position: relative;
+    top: 200px;
+    right: 130px;
+}
+#a9{
+    position: relative;
+    top: 135px;
+    right: 170px;
+}
+#a10{
+    position: relative;
+    top: 72px;
+    right: 167px;
+}
+#a11{
+    position: relative;
+    top: 25px;
+    right: 162px;
+}
+#second-hand{
+    width: 2px;
+    height: 130px;
+    background-color: rgb(255, 0, 0);
+    position: relative;
+    right: 117.5px;
+    top: 20px;
+    transform-origin: bottom center;
+
+}
+#minute-hand{
+    background-color: black;
+    width: 4px;
+    height: 120px;
+    position: relative;
+    top: 30px;
+    right: 128px;
+    transform-origin: bottom center;
+    border-radius: 2px;
+}
+#hour-hand{
+    background-color: rgb(0, 0, 0);
+    width:7px;
+    position: relative;
+    height: 70px;
+    top: 80px;
+    right: 122.5px;
+    border-radius: 3px;
+    transform-origin: bottom center;
+}
+#dot{
+    width: 10px;
+    height: 10px;
+    background-color: gold;
+    border-radius: 5px;
+    position: relative;
+    right: 135px;
+    top: 145px;
+}
+#dot2{
+    width: 4px;
+    height: 4px;
+    background-color: black;
+    border-radius: 2px;
+    position: relative;
+    right: 142px;
+    top: 148px;
+}
+</style>
+<body>
+    <div id="clock">
+
+
+    <div class="clocknumbers" id="a12">12</div>
+    <div class="clocknumbers" id="a1">1</div>
+    <div class="clocknumbers" id="a2">2</div>
+    <div class="clocknumbers" id="a3">3</div>
+    <div class="clocknumbers"id="a4">4</div>
+    <div class="clocknumbers"id="a5">5</div>
+    <div class="clocknumbers" id="a6">6</div>
+    <div class="clocknumbers" id="a7">7</div>
+    <div class="clocknumbers" id="a8">8</div>
+    <div class="clocknumbers" id="a9">9</div>
+    <div class="clocknumbers" id="a10">10</div>
+    <div class="clocknumbers" id="a11">11</div>
+<div id="second-hand"></div>
+<div id="hour-hand"></div>
+<div id="minute-hand"></div>
+<div id="dot"></div>
+<div id="dot2"></div>
+
+
+
+
+    </div>
+</body>
+<script>
+    function rotateClockHands() {
+    const currentDate = new Date();
+    const seconds = currentDate.getSeconds();
+    const minutes = currentDate.getMinutes();
+    const hours = currentDate.getHours();
+
+    const secondHand = document.getElementById('second-hand');
+    const minuteHand = document.getElementById('minute-hand');
+    const hourHand = document.getElementById('hour-hand');
+
+    const secondRotation = 6 * seconds;
+    const minuteRotation = 6 * minutes + secondRotation / 60;
+    const hourRotation = 30 * (hours % 12) + minuteRotation / 12;
+
+    secondHand.style.transform = `rotate(${secondRotation}deg)`;
+    minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
+    hourHand.style.transform = `rotate(${hourRotation}deg)`;
+}
+
+
+setInterval(rotateClockHands, 1000);
+
+
+rotateClockHands();
+
+</script>
+</html>
